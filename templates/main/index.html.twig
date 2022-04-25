@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+    {% block menu %}
+        {% include "navbar/navbar.html.twig" %}
+    {% endblock %}
+
+
+    <div class="container">
+        <h1>Tableau des pays</h1></div>
+
+    <div class="container d-flex">
+        {% for country in countries %}
+
+            <div class="card m-2" style="width: 18rem;">
+
+                <div class="card-body ">
+                    <h2 class="card-title">{{ country.name }}</h2>
+                    <p class="card-text"><span class="fw-bold">Nombre d'habitants:</span> {{ country.inhabitant }}
+                    </p>
+                    <p><span class="fw-bold">Capitale:</span> {{ country.capital }}</p>
+
+                    <p><span class="fw-bold">Continent:</span> {{ country.continent.name }}</p>
+
+                    <a href="{{ path('app_country_edit',{'id': country.id}) }}" class="btn btn-primary">Editer</a>
+                    <a href="{{ path('app_country_delete',{'id': country.id}) }}"
+                       class="btn btn-primary">Supprimer</a>
+                </div>
+            </div>
+
+
+        {% endfor %}
+        <table class="">
+
+        </table>
+    </div>
+{% endblock %}
